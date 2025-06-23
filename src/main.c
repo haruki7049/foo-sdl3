@@ -1,4 +1,6 @@
-#include <SDL3/SDL.h>
+#include <stdio.h>
+#include <SDL3/SDL_render.h>
+#include <SDL3/SDL_init.h>
 
 int main() {
   const int window_w = 640;
@@ -11,12 +13,14 @@ int main() {
   // Window declaration
   SDL_Window *window = SDL_CreateWindow("foo-sdl3", window_w, window_h, 0);
   if (!window) {
+    fprintf(stderr, "Cannot create window");
     return 1;
   }
 
   // Rendererer declaration
   SDL_Renderer *renderer = SDL_CreateRenderer(window, NULL);
   if (!renderer) {
+    fprintf(stderr, "Cannot create renderer");
     return 1;
   }
 
