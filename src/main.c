@@ -8,22 +8,26 @@ int main() {
     return 1;
   }
 
+  // Window declaration
   SDL_Window *window = SDL_CreateWindow("foo-sdl3", window_w, window_h, 0);
   if (!window) {
     return 1;
   }
 
+  // Rendererer declaration
   SDL_Renderer *renderer = SDL_CreateRenderer(window, NULL);
   if (!renderer) {
     return 1;
   }
 
+  // Drawing
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderPresent(renderer);
 
   SDL_Event event;
 
+  // Main loop
   while (true) {
     while (SDL_PollEvent(&event)) {
       if (event.type == SDL_EVENT_QUIT)
@@ -31,6 +35,7 @@ int main() {
     }
   }
 
+  // Destroying
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
 
