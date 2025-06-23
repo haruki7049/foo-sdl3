@@ -3,6 +3,7 @@
 import os
 
 env = Environment(ENV = {
+    "CFLAGS": "-std=c23",
     "PATH": os.environ["PATH"],
     "PKG_CONFIG_PATH": os.environ["PKG_CONFIG_PATH"],
 })
