@@ -1,0 +1,8 @@
+#!/usr/bin/env pytnon3
+
+import os
+
+print("Reading tests/SConscript")
+
+env = Environment()
+env.Program(target = "foo-sdl3-test", source = "main.c")
