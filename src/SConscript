@@ -1,0 +1,10 @@
+#!/usr/bin/env pytnon3
+
+import os
+
+env = Environment(ENV = {
+    "PATH": os.environ["PATH"],
+    "PKG_CONFIG_PATH": os.environ["PKG_CONFIG_PATH"],
+})
+env.ParseConfig("pkg-config sdl3 --cflags --libs")
+env.Program(target = "foo-sdl3", source = "main.c")
