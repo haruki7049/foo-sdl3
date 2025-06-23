@@ -36,6 +36,7 @@
           ];
           buildInputs = [
             pkgs.sdl3
+            pkgs.cunit
           ];
 
           foo-sdl3 = pkgs.stdenv.mkDerivation {

@@ -2,7 +2,11 @@
 
 import os
 
-print("Reading tests/SConscript")
-
-env = Environment()
+env = Environment(ENV = {
+    "CFLAGS": "-std=c23",
+    "PATH": os.environ["PATH"],
+    "PKG_CONFIG_PATH": os.environ["PKG_CONFIG_PATH"],
+})
+env.ParseConfig("pkg-config sdl3 --cflags --libs")
+env.ParseConfig("pkg-config cunit --cflags --libs")
 env.Program(target = "foo-sdl3-test", source = "main.c")
