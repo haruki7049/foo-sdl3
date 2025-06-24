@@ -15,3 +15,5 @@ program = SConscript(dirs = ["src"], variant_dir = "build/dist")
 
 runner_env.Command("test-run", test_program, os.path.abspath(str(test_program[0])))
 runner_env.Command("run", program, os.path.abspath(str(program[0])))
+
+Default()
