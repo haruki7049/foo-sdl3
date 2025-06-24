@@ -1,12 +1,19 @@
-#!/usr/bin/env pytnon3
+#!/usr/bin/env python3
 
 import os
+from SCons.Script import Environment, Return
 
 env = Environment(ENV = {
     "CFLAGS": "-std=c23",
-    "PATH": os.environ["PATH"],
-    "PKG_CONFIG_PATH": os.environ["PKG_CONFIG_PATH"],
+    "PATH": os.environ.get("PATH", ""),
+    "PKG_CONFIG_PATH": os.environ.get("PKG_CONFIG_PATH", ""),
 })
+
+# Dependencies by pkg-config
 env.ParseConfig("pkg-config sdl3 --cflags --libs")
 env.ParseConfig("pkg-config cunit --cflags --libs")
-env.Program(target = "foo-sdl3-test", source = "main.c")
+
+# Compile
+program = env.Program(target = "foo-sdl3-test", source = "main.c")
+
+Return("program")

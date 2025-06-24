@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
 
+import os
+import subprocess
+from SCons.Script import Environment, Return
+
+
+runner_env = Environment(ENV = os.environ.copy())
+
 # Testing
-SConscript(dirs = ["tests"], variant_dir = "build/tests")
+test_program = SConscript(dirs = ["tests"], variant_dir = "build/tests")
 
 # Building
-SConscript(dirs = ["src"], variant_dir = "build/dist")
+program = SConscript(dirs = ["src"], variant_dir = "build/dist")
+
+runner_env.Command("test-run", test_program, os.path.abspath(str(test_program[0])))
+runner_env.Command("run", program, os.path.abspath(str(program[0])))
