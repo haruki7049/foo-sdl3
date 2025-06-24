@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <SDL3/SDL_render.h>
 #include <SDL3/SDL_init.h>
+#include <SDL3/SDL_render.h>
+#include <stdio.h>
 
 int main() {
   const int window_w = 640;
