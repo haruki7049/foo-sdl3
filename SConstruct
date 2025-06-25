@@ -5,17 +5,20 @@ import subprocess
 from SCons.Script import Environment, Return
 
 
-runner_env = Environment(ENV = os.environ.copy())
+env = Environment(ENV = os.environ.copy())
 
 # Testing
-test_program = SConscript(dirs = ["tests"], variant_dir = "build/tests")
+test_program = SConscript(dirs = ["tests"], variant_dir = ".out/tests", exports = "env")
 
 # Building
-program = SConscript(dirs = ["src"], variant_dir = "build/dist")
+dirs = ["src"]
+variant_dir = ".out/dist"
+program = env.SConscript(dirs = dirs, variant_dir = variant_dir, exports = "env")
+print(str(program))
 
-runner_env.Command("test", test_program, os.path.abspath(str(test_program[0])))
-runner_env.Command("t", test_program, os.path.abspath(str(test_program[0])))
-runner_env.Command("run", program, os.path.abspath(str(program[0])))
-runner_env.Command("r", program, os.path.abspath(str(program[0])))
+env.Command("test", test_program, os.path.abspath(str(test_program[0])))
+env.Command("t", test_program, os.path.abspath(str(test_program[0])))
+env.Command("run", program, os.path.abspath(str(program[0])))
+env.Command("r", program, os.path.abspath(str(program[0])))
 
 Default()

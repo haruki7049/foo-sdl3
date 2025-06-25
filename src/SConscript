@@ -3,11 +3,7 @@
 import os
 from SCons.Script import Environment, Return
 
-env = Environment(ENV = {
-    "CFLAGS": "-std=c23",
-    "PATH": os.environ["PATH"],
-    "PKG_CONFIG_PATH": os.environ["PKG_CONFIG_PATH"],
-})
+Import("env")
 
 # Dependencies by pkg-config
 env.ParseConfig("pkg-config sdl3 --cflags --libs")

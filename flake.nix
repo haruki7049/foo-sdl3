@@ -38,10 +38,13 @@
             pkgs.sdl3
             pkgs.cunit
           ];
+          env = {
+            CFLAGS = "-std=c23";
+          };
 
           foo-sdl3 = pkgs.stdenv.mkDerivation {
             name = "foo-sdl3";
-            inherit src nativeBuildInputs buildInputs;
+            inherit src nativeBuildInputs buildInputs env;
 
             installPhase = ''
               mkdir -p $out/bin
@@ -76,7 +79,7 @@
           };
 
           devShells.default = pkgs.mkShell {
-            inherit nativeBuildInputs buildInputs;
+            inherit nativeBuildInputs buildInputs env;
 
             shellHook = ''
               export PS1="\n[nix-shell:\w]$ "
