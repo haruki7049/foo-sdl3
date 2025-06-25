@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 int main() {
-  const int window_w = 640;
-  const int window_h = 480;
+  const int window_w = 1280;
+  const int window_h = 720;
 
   if (!SDL_Init(SDL_INIT_VIDEO)) {
     return 1;
