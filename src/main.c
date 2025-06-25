@@ -34,6 +34,8 @@ int main() {
     return 1;
   }
 
+  SDL_SetRenderLogicalPresentation(renderer, 1280, 720, SDL_LOGICAL_PRESENTATION_DISABLED);
+
   SDL_Event event;
   float example_rect_x = 100;
   float example_rect_y = 100;
@@ -41,11 +43,11 @@ int main() {
   // Main loop
   while (true) {
     // Drawing
-    SDL_SetRenderDrawColor(renderer, 255, 100, 20, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255);
     const SDL_FRect example_rect = init_frect(example_rect_x, example_rect_y, 100.0, 100.0);
     SDL_RenderFillRect(renderer, &example_rect);
     SDL_RenderPresent(renderer);
