@@ -47,8 +47,9 @@ int main() {
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
 
+    // Drawing rectangle
     SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255);
-    const SDL_FRect example_rect = init_frect(example_rect_x, example_rect_y, 100.0, 100.0);
+    const SDL_FRect example_rect = init_frect(example_rect_x, example_rect_y, 10, 10);
     SDL_RenderFillRect(renderer, &example_rect);
     SDL_RenderPresent(renderer);
 
